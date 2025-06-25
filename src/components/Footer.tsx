@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 
 export const Footer = () => {
   return (
-    <footer className="bg-black text-white pt-10 pb-6">
+    <footer className="bg-white text-black pt-10 pb-6">
       <div className="max-w-[1440px] mx-auto px-8">
         <div className="grid grid-cols-1 lg:grid-cols-4 gap-8 lg:gap-12">
           {/* Logo Section */}
@@ -69,35 +69,35 @@ export const Footer = () => {
 
           {/* Quick Links */}
           <div className="text-center lg:text-left">
-            <h3 className="text-white text-lg font-semibold mb-6 tracking-wide">QUICK LINKS</h3>
+            <h3 className="text-black text-lg font-semibold mb-6 tracking-wide">QUICK LINKS</h3>
             <ul className="space-y-3">
               <li>
-                <Link to="/" className="text-white hover:text-[#DDB9A2] transition-colors duration-300 text-base block">
+                <Link to="/" className="text-black hover:text-[#DDB9A2] transition-colors duration-300 text-base block">
                   Home
                 </Link>
               </li>
               <li>
-                <Link to="/about" className="text-white hover:text-[#DDB9A2] transition-colors duration-300 text-base block">
+                <Link to="/about" className="text-black hover:text-[#DDB9A2] transition-colors duration-300 text-base block">
                   About Us
                 </Link>
               </li>
               <li>
-                <Link to="/services" className="text-white hover:text-[#DDB9A2] transition-colors duration-300 text-base block">
+                <Link to="/services" className="text-black hover:text-[#DDB9A2] transition-colors duration-300 text-base block">
                   Services
                 </Link>
               </li>
               <li>
-                <Link to="/projects" className="text-white hover:text-[#DDB9A2] transition-colors duration-300 text-base block">
+                <Link to="/projects" className="text-black hover:text-[#DDB9A2] transition-colors duration-300 text-base block">
                   Projects
                 </Link>
               </li>
               <li>
-                <Link to="/careers" className="text-white hover:text-[#DDB9A2] transition-colors duration-300 text-base block">
+                <Link to="/careers" className="text-black hover:text-[#DDB9A2] transition-colors duration-300 text-base block">
                   Careers
                 </Link>
               </li>
               <li>
-                <Link to="/contact" className="text-white hover:text-[#DDB9A2] transition-colors duration-300 text-base block">
+                <Link to="/contact" className="text-black hover:text-[#DDB9A2] transition-colors duration-300 text-base block">
                   Contact
                 </Link>
               </li>
@@ -106,20 +106,20 @@ export const Footer = () => {
 
           {/* Other Links */}
           <div className="text-center lg:text-left">
-            <h3 className="text-white text-lg font-semibold mb-6 tracking-wide">OTHER LINKS</h3>
+            <h3 className="text-black text-lg font-semibold mb-6 tracking-wide">OTHER LINKS</h3>
             <ul className="space-y-3">
               <li>
-                <Link to="/blogs" className="text-white hover:text-[#DDB9A2] transition-colors duration-300 text-base block">
+                <Link to="/blogs" className="text-black hover:text-[#DDB9A2] transition-colors duration-300 text-base block">
                   Blogs
                 </Link>
               </li>
               <li>
-                <Link to="/articles" className="text-white hover:text-[#DDB9A2] transition-colors duration-300 text-base block">
+                <Link to="/articles" className="text-black hover:text-[#DDB9A2] transition-colors duration-300 text-base block">
                   Articles
                 </Link>
               </li>
               <li>
-                <Link to="/journals" className="text-white hover:text-[#DDB9A2] transition-colors duration-300 text-base block">
+                <Link to="/journals" className="text-black hover:text-[#DDB9A2] transition-colors duration-300 text-base block">
                   Journals
                 </Link>
               </li>
@@ -128,10 +128,10 @@ export const Footer = () => {
 
           {/* Contact Info */}
           <div className="text-center lg:text-left">
-            <h3 className="text-white text-lg font-semibold mb-6 tracking-wide">CONTACT</h3>
+            <h3 className="text-black text-lg font-semibold mb-6 tracking-wide">CONTACT</h3>
             <div className="space-y-4">
               <div>
-                <p className="text-white text-base leading-relaxed">
+                <p className="text-black text-base leading-relaxed">
                   2049, sector 28,<br />
                   Faridabad, Haryana - 121008
                 </p>
@@ -139,7 +139,7 @@ export const Footer = () => {
               <div>
                 <a 
                   href="mailto:ritik@allina.in" 
-                  className="text-white hover:text-[#DDB9A2] transition-colors duration-300 text-base block"
+                  className="text-black hover:text-[#DDB9A2] transition-colors duration-300 text-base block"
                 >
                   ritik@allina.in
                 </a>
@@ -147,7 +147,7 @@ export const Footer = () => {
               <div>
                 <a 
                   href="tel:+919717541242" 
-                  className="text-white hover:text-[#DDB9A2] transition-colors duration-300 text-base block"
+                  className="text-black hover:text-[#DDB9A2] transition-colors duration-300 text-base block"
                 >
                   +91 9717541242
                 </a>
@@ -157,9 +157,9 @@ export const Footer = () => {
         </div>
 
         {/* Horizontal Line and Copyright */}
-        <div style={{ marginTop: '-110px' }} className="pt-6 border-t border-white">
+        <div style={{ marginTop: '-110px' }} className="pt-6 border-t border-black">
           <div className="text-center">
-            <p className="text-white text-sm">
+            <p className="text-black text-sm">
               ©2025 | All Rights reserved | Allina Luminaries Pvt. Ltd.
             </p>
           </div>

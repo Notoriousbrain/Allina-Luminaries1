@@ -9,7 +9,7 @@ const LOGO_VERTICAL_OFFSET = 0; // Change this value to adjust logo distance fro
 
 export const Header: React.FC = () => {
   const [drawerOpen, setDrawerOpen] = useState(false);
-  const { theme } = useTheme();
+  const { theme, isJourneyInView } = useTheme();
   const isDark = theme === 'dark';
   const logoSrc = isDark ? allinaLogoDark : allinaLogoLight;
   const headerTextColor = isDark ? '#DDB9A2' : '#06153A';
@@ -36,7 +36,13 @@ export const Header: React.FC = () => {
   // Responsive: hide nav links on small screens, always show ☰
   return ( 
     <header className="relative w-full h-[60px] sm:h-[80px] md:h-[100px] z-50">
-      <nav className="fixed w-full h-[60px] sm:h-[80px] md:h-[100px] top-0 left-0 bg-white dark:bg-black transition-colors duration-700 z-50 shadow-[0_6px_32px_0_rgba(0,0,0,0.18)]">
+      <nav 
+        className="fixed w-full h-[60px] sm:h-[80px] md:h-[100px] top-0 left-0 bg-white dark:bg-black transition-all duration-700 z-50 shadow-[0_6px_32px_0_rgba(0,0,0,0.18)]"
+        style={{ 
+          opacity: isJourneyInView ? 0 : 1,
+          pointerEvents: isJourneyInView ? 'none' : 'auto'
+        }}
+      >
         <div className="max-w-[1440px] mx-auto relative h-full px-4 sm:px-6 md:px-8 flex items-center justify-between">
           {/* Logo Section */}
           <div className="flex items-center h-full">

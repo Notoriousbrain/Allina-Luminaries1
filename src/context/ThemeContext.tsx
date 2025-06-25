@@ -6,6 +6,7 @@ interface ThemeContextType {
   theme: Theme;
   setTheme: (theme: Theme) => void;
   setJourneyInView: (inView: boolean) => void;
+  isJourneyInView: boolean;
 }
 
 const ThemeContext = createContext<ThemeContextType | undefined>(undefined);
@@ -37,7 +38,7 @@ export const ThemeProvider: React.FC<{ children: React.ReactNode }> = ({ childre
   };
 
   return (
-    <ThemeContext.Provider value={{ theme, setTheme, setJourneyInView }}>
+    <ThemeContext.Provider value={{ theme, setTheme, setJourneyInView, isJourneyInView }}>
       {children}
     </ThemeContext.Provider>
   );
