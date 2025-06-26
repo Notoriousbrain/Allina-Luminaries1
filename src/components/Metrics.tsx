@@ -70,7 +70,7 @@ export const Metrics: React.FC = () => {
   return (
     <section
       ref={sectionRef}
-      className="w-full bg-[#E7DED7] border border-black py-16 sm:py-20 md:py-24"
+      className="w-full bg-[#E7DED7] py-16 sm:py-20 md:py-24"
     >
       <div className="max-w-[1400px] mx-auto px-4 sm:px-6 md:px-8">
         <div className="text-center mb-12 sm:mb-16 md:mb-20">
