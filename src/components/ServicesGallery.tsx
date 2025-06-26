@@ -72,7 +72,7 @@ export const ServicesGallery: React.FC = () => {
   return (
     <section 
       ref={sectionRef}
-      className="w-full bg-[#E7DED7] dark:bg-black transition-colors duration-700 pt-12 sm:pt-16 md:pt-20">
+      className="w-full bg-[#E7DED7] pb-10 min-h- border dark:bg-black transition-colors duration-700 pt-12 sm:pt-16 md:pt-20">
       <div className="max-w-[1440px] mx-auto relative min-h-[600px] sm:min-h-[700px] md:min-h-[800px] px-4 sm:px-6 md:px-8">
         <h2 className="text-center text-[#06153A] dark:text-[#E7DED7] text-[24px] sm:text-[28px] md:text-[32px] font-normal tracking-[2.5px] sm:tracking-[3px] md:tracking-[3.2px] mb-8 sm:mb-12 md:mb-16 transition-colors duration-700"
             style={{ fontFamily: '"Myriad Pro", Helvetica, Arial, sans-serif' }}>
