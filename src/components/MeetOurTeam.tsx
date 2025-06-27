@@ -14,7 +14,7 @@ export const MeetOurTeam = () => {
       {/* MEET OUR TEAM Content */}
       <div className="w-full bg-[#E7DED7]">
         <div className="flex flex-col items-center pt-0 pb-16">
-          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4 sm:gap-5 md:gap-6 px-4 sm:px-6 md:px-8 max-w-7xl mx-auto w-full">
+        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4 sm:gap-5 md:gap-6 px-4 sm:px-6 md:px-8 max-w-7xl mx-auto w-full">
           {/* Team Member 1 */}
           <div className="relative overflow-hidden rounded-[15px] sm:rounded-[18px] md:rounded-[20px] group">
             <div className="relative w-full aspect-square overflow-hidden">
@@ -79,7 +79,7 @@ export const MeetOurTeam = () => {
                 Position
               </p>
             </div>
-          </div>
+            </div>
           </div>
         </div>
       </div>

@@ -37,7 +37,7 @@ export const DeviceShowcase: React.FC = () => {
   return (
     <section 
       ref={sectionRef}
-      className="w-full min-h-[50vh] sm:min-h-[60vh] md:min-h-[70vh] lg:min-h-screen flex items-center justify-center py-12 sm:py-16 md:py-20 px-4 md:px-8 transition-colors duration-700"
+      className="w-full min-h-[50vh] sm:min-h-[60vh] md:min-h-[70vh] lg:min-h-screen flex items-center justify-center py-12 sm:py-16 md:py-20 px-4 md:px-8 transition-colors duration-700 mb-0"
     >
       <div className="relative w-full max-w-5xl aspect-[4/3] sm:aspect-[16/10] md:aspect-[16/9] rounded-[20px] sm:rounded-[30px] md:rounded-[40px] overflow-hidden bg-[#06153A] shadow-xl sm:shadow-2xl">
         <div className="absolute inset-0 flex items-center justify-center">

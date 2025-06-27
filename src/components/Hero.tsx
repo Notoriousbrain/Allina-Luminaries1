@@ -6,14 +6,14 @@ export const Hero: React.FC = () => {
       className="hero-section"
       style={{
         width: '100%',
-        minHeight: '86.25vh',
+        height: 'calc(100vh - 60px)', // Mobile: 100vh - 60px header
         background: '#06153A',
         position: 'relative',
         overflow: 'hidden',
         display: 'flex',
         flexDirection: 'column',
         alignItems: 'center',
-        justifyContent: 'flex-start',
+        justifyContent: 'center',
         padding: 0,
       }}
     >
@@ -147,23 +147,21 @@ export const Hero: React.FC = () => {
       </div>
       {/* Responsive styles */}
       <style>{`
-        /* Desktop and larger screens - 70% of viewport minus header height */}
+        /* Small screens (sm) - 100vh minus 80px header */}
+        @media (min-width: 640px) {
+          .hero-section {
+            height: calc(100vh - 80px) !important;
+          }
+        }
+        
+        /* Medium screens and larger (md+) - 100vh minus 100px header */}
         @media (min-width: 768px) {
           .hero-section {
-            height: calc((100vh - 100px) * 0.7) !important;
-            min-height: calc((100vh - 100px) * 0.7) !important;
+            height: calc(100vh - 100px) !important;
           }
         }
         
-        /* Tablet screens - 70% of viewport minus smaller header height */}
-        @media (min-width: 640px) and (max-width: 767px) {
-          .hero-section {
-            height: calc((100vh - 80px) * 0.7) !important;
-            min-height: calc((100vh - 80px) * 0.7) !important;
-          }
-        }
-        
-        /* Mobile styles - Keep original behavior */}
+        /* Mobile styles adjustments */}
         @media (max-width: 700px) {
           .hero-video {
             margin-top: 2vw !important;
@@ -192,10 +190,6 @@ export const Hero: React.FC = () => {
             margin-bottom: 0vw !important;
             line-height: 1.3 !important;
             max-width: 95vw !important;
-          }
-          section {
-            min-height: 42vh !important;
-            padding-bottom: 0 !important;
           }
           .hero-allina, .hero-tagline, .hero-paragraph {
             text-align: center !important;
@@ -233,10 +227,6 @@ export const Hero: React.FC = () => {
             margin-bottom: 0vw !important;
             line-height: 1.2 !important;
             max-width: 98vw !important;
-          }
-          section {
-            min-height: 35vh !important;
-            padding-bottom: 0 !important;
           }
         }
       `}</style>
