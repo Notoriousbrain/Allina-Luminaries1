@@ -11,15 +11,15 @@ const ServicesHero = () => {
       }}
     >
       {/* Content container */}
-      <div className="w-full max-w-[1440px] mx-auto relative px-6 sm:px-10 md:px-16 lg:px-20 flex flex-col justify-center h-full z-10">
+      <div className="w-full max-w-[1440px] mx-auto relative px-4 sm:px-6 md:px-10 lg:px-16 xl:px-20 flex flex-col justify-center h-full z-10">
         {/* Text Container */}
         <div className="relative w-full h-full flex flex-col items-center justify-center">
           {/* "WHAT WE" text */}
           <div 
-            className="relative text-center mb-4 sm:mb-6 md:mb-8"
+            className="relative text-center mb-2 sm:mb-4 md:mb-6 lg:mb-8 what-we-text"
             style={{
               fontFamily: 'Myriad Pro, sans-serif',
-              fontSize: 'clamp(40px, 9vw, 95px)',
+              fontSize: 'clamp(24px, 6vw, 95px)',
               fontWeight: '400',
               letterSpacing: '0.1em',
               color: 'white',
@@ -32,10 +32,10 @@ const ServicesHero = () => {
 
           {/* "OFFER" text with image mask */}
           <div 
-            className="relative text-center"
+            className="relative text-center offer-text"
             style={{
               fontFamily: 'Anton, sans-serif',
-              fontSize: 'clamp(80px, 28vw, 550px)',
+              fontSize: 'clamp(48px, 18vw, 550px)',
               fontWeight: '400',
               letterSpacing: '0.05em',
               textAlign: 'center',
@@ -48,8 +48,10 @@ const ServicesHero = () => {
               backgroundRepeat: 'no-repeat',
               zIndex: 10,
               lineHeight: '0.9',
-              maxWidth: '100%',
-              wordBreak: 'break-word'
+              width: '80vw',
+              maxWidth: '80vw',
+              whiteSpace: 'nowrap',
+              overflow: 'hidden'
             }}
           >
             OFFER
@@ -60,88 +62,147 @@ const ServicesHero = () => {
       {/* Gradient overlay */}
       <div className="absolute inset-0 bg-gradient-to-b from-transparent to-black/30 z-0"></div>
 
-      {/* Responsive height and font adjustments */}
+      {/* Responsive styles */}
       <style>{`
-        @media (min-width: 640px) {
-          .services-hero-section {
-            height: calc(100vh - 80px) !important;
-            min-height: calc(100vh - 80px) !important;
-          }
+        /* Base styles for all screen sizes */
+        .services-hero-section {
+          height: calc(100vh - 60px);
+          min-height: calc(100vh - 60px);
         }
-        @media (min-width: 768px) {
-          .services-hero-section {
-            height: calc(100vh - 100px) !important;
-            min-height: calc(100vh - 100px) !important;
-          }
-        }
-        
-        /* Landscape mode optimizations */
-        @media (max-height: 600px) {
-          .services-hero-section {
-            font-size: 0.8em !important;
-          }
-          .services-hero-section [style*="clamp(40px, 8vw, 90px)"] {
-            font-size: clamp(30px, 6vw, 60px) !important;
-          }
-          .services-hero-section [style*="clamp(80px, 20vw, 450px)"] {
-            font-size: clamp(60px, 15vw, 300px) !important;
-          }
-        }
-        
-        /* Very short screens (like tablets in landscape) */
-        @media (max-height: 500px) {
-          .services-hero-section [style*="clamp(40px, 8vw, 90px)"] {
-            font-size: clamp(25px, 5vw, 45px) !important;
-          }
-          .services-hero-section [style*="clamp(80px, 20vw, 450px)"] {
-            font-size: clamp(50px, 12vw, 200px) !important;
-          }
-          .services-hero-section .mb-4 {
-            margin-bottom: 0.5rem !important;
-          }
-          .services-hero-section .sm\\:mb-6 {
-            margin-bottom: 0.75rem !important;
-          }
-          .services-hero-section .md\\:mb-8 {
-            margin-bottom: 1rem !important;
-          }
-        }
-        
-        /* Tablet and larger screens - Bigger fonts */
-        @media (min-width: 768px) {
-          .services-hero-section [style*="clamp(40px, 8vw, 120px)"] {
-            font-size: clamp(60px, 8vw, 140px) !important;
-          }
-          .services-hero-section [style*="clamp(80px, 22vw, 550px)"] {
-            font-size: clamp(120px, 22vw, 600px) !important;
-          }
-        }
-        
-        /* Ultra-wide screens */
-        @media (min-width: 1440px) {
-          .services-hero-section [style*="clamp(40px, 8vw, 120px)"] {
-            font-size: clamp(80px, 8vw, 160px) !important;
-          }
-          .services-hero-section [style*="clamp(80px, 22vw, 550px)"] {
-            font-size: clamp(150px, 22vw, 700px) !important;
-          }
-        }
-        
-        /* Mobile phone viewport adjustments */
+
+        /* Mobile phones (up to 640px) */
         @media (max-width: 640px) {
           .services-hero-section {
-            height: 100vh !important;
-            min-height: 100vh !important;
+            height: 100vh;
+            min-height: 100vh;
+          }
+          
+          .what-we-text {
+            font-size: clamp(20px, 8vw, 35px) !important;
+            margin-bottom: 0.5rem !important;
+          }
+          
+          .offer-text {
+            font-size: clamp(36px, 12vw, 80px) !important;
           }
         }
-        
-        /* Very narrow screens */
-        @media (max-width: 480px) {
-          .services-hero-section [style*="clamp(40px, 8vw, 90px)"] {
-            font-size: clamp(20px, 8vw, 35px) !important;
+
+        /* Small tablets (641px - 768px) */
+        @media (min-width: 641px) and (max-width: 768px) {
+          .services-hero-section {
+            height: calc(100vh - 80px);
+            min-height: calc(100vh - 80px);
           }
-          .services-hero-section [style*="clamp(80px, 20vw, 450px)"] {
-            font-size: clamp(40px, 20vw, 80px) !important;
+          
+          .what-we-text {
+            font-size: clamp(32px, 7vw, 60px) !important;
+            margin-bottom: 1rem !important;
+          }
+          
+          .offer-text {
+            font-size: clamp(64px, 14vw, 200px) !important;
+          }
+        }
+
+        /* Tablets (769px - 1024px) */
+        @media (min-width: 769px) and (max-width: 1024px) {
+          .services-hero-section {
+            height: calc(100vh - 100px);
+            min-height: calc(100vh - 100px);
+          }
+          
+          .what-we-text {
+            font-size: clamp(48px, 8vw, 80px) !important;
+            margin-bottom: 1.5rem !important;
+          }
+          
+          .offer-text {
+            font-size: clamp(96px, 16vw, 300px) !important;
+          }
+        }
+
+        /* Desktop (1025px - 1440px) */
+        @media (min-width: 1025px) and (max-width: 1440px) {
+          .services-hero-section {
+            height: calc(100vh - 100px);
+            min-height: calc(100vh - 100px);
+          }
+          
+          .what-we-text {
+            font-size: clamp(60px, 8vw, 95px) !important;
+            margin-bottom: 2rem !important;
+          }
+          
+          .offer-text {
+            font-size: clamp(120px, 18vw, 450px) !important;
+          }
+        }
+
+        /* Large desktop (1441px and up) */
+        @media (min-width: 1441px) {
+          .services-hero-section {
+            height: calc(100vh - 100px);
+            min-height: calc(100vh - 100px);
+          }
+          
+          .what-we-text {
+            font-size: clamp(80px, 8vw, 120px) !important;
+            margin-bottom: 2rem !important;
+          }
+          
+          .offer-text {
+            font-size: clamp(150px, 20vw, 550px) !important;
+          }
+        }
+
+        /* Landscape mode optimizations for short screens */
+        @media (max-height: 600px) and (orientation: landscape) {
+          .services-hero-section {
+            height: 100vh;
+            min-height: 100vh;
+          }
+          
+          .what-we-text {
+            font-size: clamp(20px, 4vw, 40px) !important;
+            margin-bottom: 0.25rem !important;
+          }
+          
+          .offer-text {
+            font-size: clamp(40px, 8vw, 120px) !important;
+          }
+        }
+
+        /* Very short screens (like tablets in landscape) */
+        @media (max-height: 500px) and (orientation: landscape) {
+          .what-we-text {
+            font-size: clamp(16px, 3vw, 30px) !important;
+            margin-bottom: 0.125rem !important;
+          }
+          
+          .offer-text {
+            font-size: clamp(32px, 6vw, 80px) !important;
+          }
+        }
+
+        /* Ultra-wide screens */
+        @media (min-width: 1920px) {
+          .what-we-text {
+            font-size: clamp(100px, 8vw, 140px) !important;
+          }
+          
+          .offer-text {
+            font-size: clamp(180px, 22vw, 700px) !important;
+          }
+        }
+
+        /* Ensure text doesn't overflow on very narrow screens */
+        @media (max-width: 360px) {
+          .what-we-text {
+            font-size: clamp(18px, 6vw, 25px) !important;
+          }
+          
+          .offer-text {
+            font-size: clamp(32px, 10vw, 60px) !important;
           }
         }
       `}</style>

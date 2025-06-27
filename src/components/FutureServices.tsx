@@ -1,7 +1,14 @@
-import React, { useState } from 'react';
+import React, { useState, useRef, useEffect } from 'react';
+import { gsap } from 'gsap';
+import { useGSAP } from '@gsap/react';
 import { Accordion, AccordionItem, AccordionTrigger, AccordionContent } from './ui/accordion';
 
 export const FutureServices = () => {
+  const containerRef = useRef(null);
+  const imageRef = useRef(null);
+  const accordionRefs = useRef([]);
+  const contentRefs = useRef([]);
+
   const values = [
     { 
       num: '01.', 
@@ -33,23 +40,107 @@ export const FutureServices = () => {
 
   const allOpen = openItems.length === values.length;
 
-  const handleExpandCollapseAll = () => {
-    if (allOpen) {
-      setOpenItems([]);
+  // Initialize GSAP animations
+  useGSAP(() => {
+    // Set initial states
+    gsap.set(contentRefs.current, { height: 0, opacity: 0 });
+    gsap.set(accordionRefs.current, { y: 20, opacity: 0 });
+    
+    // Animate accordion items in
+    gsap.to(accordionRefs.current, {
+      y: 0,
+      opacity: 1,
+      duration: 0.8,
+      stagger: 0.1,
+      ease: "power2.out"
+    });
+  }, { scope: containerRef });
+
+  const animateAccordionContent = (index: number, isOpen: boolean) => {
+    const content = contentRefs.current[index];
+    const accordion = accordionRefs.current[index];
+    
+    if (!content || !accordion) return;
+
+    if (isOpen) {
+      // Open animation
+      gsap.to(content, {
+        height: "auto",
+        opacity: 1,
+        duration: 0.6,
+        ease: "power2.out"
+      });
+      
+      gsap.to(accordion, {
+        y: 0,
+        duration: 0.4,
+        ease: "power2.out"
+      });
     } else {
-      setOpenItems(values.map((_, idx) => idx.toString()));
+      // Close animation
+      gsap.to(content, {
+        height: 0,
+        opacity: 0,
+        duration: 0.4,
+        ease: "power2.in"
+      });
+      
+      gsap.to(accordion, {
+        y: 5,
+        duration: 0.3,
+        ease: "power2.in"
+      });
     }
   };
 
-  const handleAccordionChange = (items) => {
-    setOpenItems(items);
+  const animateImage = (expandedCount: number) => {
+    if (!imageRef.current) return;
+    
+    const baseOffset = expandedCount > 0 ? (expandedCount * 40) + 60 : 0;
+    
+    gsap.to(imageRef.current, {
+      y: baseOffset,
+      duration: 0.8,
+      ease: "power2.out"
+    });
   };
 
-  // Calculate dynamic image transform based on expanded content
-  const expandedCount = openItems.length;
-  // Calculate translateY to center image relative to accordion content
-  const baseOffset = expandedCount > 0 ? (expandedCount * 40) + 60 : 0;
-  const imageTransform = `translateY(${baseOffset}px)`;
+  const handleExpandCollapseAll = () => {
+    if (allOpen) {
+      // Collapse all
+      setOpenItems([]);
+      contentRefs.current.forEach((_, index) => {
+        animateAccordionContent(index, false);
+      });
+      animateImage(0);
+    } else {
+      // Expand all
+      const allIndices = values.map((_, idx) => idx.toString());
+      setOpenItems(allIndices);
+      contentRefs.current.forEach((_, index) => {
+        animateAccordionContent(index, true);
+      });
+      animateImage(values.length);
+    }
+  };
+
+  const handleAccordionChange = (items: string[]) => {
+    const previousItems = openItems;
+    setOpenItems(items);
+    
+    // Animate each item
+    values.forEach((_, index) => {
+      const isOpen = items.includes(index.toString());
+      const wasOpen = previousItems.includes(index.toString());
+      
+      if (isOpen !== wasOpen) {
+        animateAccordionContent(index, isOpen);
+      }
+    });
+    
+    // Animate image
+    animateImage(items.length);
+  };
 
   return (
     <>
@@ -62,7 +153,7 @@ export const FutureServices = () => {
       </div>
 
       {/* FUTURE SERVICES Content */}
-      <div className="w-full overflow-hidden" style={{ backgroundColor: '#06153A' }}>
+      <div className="w-full overflow-hidden" style={{ backgroundColor: '#06153A' }} ref={containerRef}>
         <div className="max-w-[1440px] mx-auto px-4 sm:px-6 md:px-8">
           {/* Top Text and Expand/Collapse Button */}
           <div className="flex flex-col md:flex-row md:items-center md:justify-between pt-6 sm:pt-8 md:pt-12 mb-8 sm:mb-12 md:mb-16">
@@ -82,7 +173,7 @@ export const FutureServices = () => {
               At ALLINA, our core values define who we are and guide every decision we make. These values are the foundation of our success.
             </h3>
             <button
-              className="text-white text-lg font-normal tracking-[2px] px-6 py-2 border border-white rounded-full mt-6 md:mt-0 hover:bg-white hover:text-black transition"
+              className="text-white text-lg font-normal tracking-[2px] px-6 py-2 border border-white rounded-full mt-6 md:mt-0 hover:bg-white hover:text-black transition-all duration-300 transform hover:scale-105"
               style={{ fontWeight: 400 }}
               onClick={handleExpandCollapseAll}
             >
@@ -94,11 +185,10 @@ export const FutureServices = () => {
             {/* Left side - Image */}
             <div className="flex-shrink-0 w-[350px] lg:w-[500px] xl:w-[500px] mx-auto md:mx-0 flex justify-center">
               <div 
+                ref={imageRef}
                 className="w-[350px] h-[400px] lg:w-[500px] lg:h-[500px] xl:w-[500px] xl:h-[550px] bg-cover bg-center rounded-lg"
                 style={{
-                  backgroundImage: 'url(https://c.animaapp.com/zheglGTa/img/unsplash-xu5mqq0chck.png)',
-                  transform: imageTransform,
-                  transition: 'transform 0.8s cubic-bezier(0.4, 0, 0.2, 1)'
+                  backgroundImage: 'url(https://c.animaapp.com/zheglGTa/img/unsplash-xu5mqq0chck.png)'
                 }}
               />
             </div>
@@ -107,8 +197,18 @@ export const FutureServices = () => {
             <div className="flex-1 min-w-0">
               <Accordion type="multiple" value={openItems} onValueChange={handleAccordionChange}>
                 {values.map((value, idx) => (
-                  <AccordionItem key={idx} value={idx.toString()} className="border-b border-white/30">
-                    <AccordionTrigger className="flex items-center gap-6 py-6" iconColor="#ffffff">
+                  <AccordionItem 
+                    key={idx} 
+                    value={idx.toString()} 
+                    className="border-b border-white/30"
+                    ref={(el) => {
+                      if (el) accordionRefs.current[idx] = el;
+                    }}
+                  >
+                    <AccordionTrigger 
+                      className="flex items-center gap-6 py-6 hover:bg-white/5 transition-colors duration-300 focus:outline-none focus:bg-transparent" 
+                      iconColor="#ffffff"
+                    >
                       <span className="text-white text-[20px] lg:text-[24px] xl:text-[28px] font-normal min-w-[60px] lg:min-w-[80px]"
                         style={{ fontFamily: 'Myriad Pro, Helvetica, Arial, sans-serif', fontWeight: 400 }}>
                         {value.num}
@@ -129,10 +229,17 @@ export const FutureServices = () => {
                       </span>
                     </AccordionTrigger>
                     <AccordionContent>
-                      <p className="text-white text-[14px] lg:text-[16px] xl:text-[18px] leading-6 lg:leading-7 max-w-[500px] font-normal mt-0"
-                        style={{ fontFamily: 'Myriad Pro, Helvetica, Arial, sans-serif', fontWeight: 400, marginTop: 0 }}>
+                      <div
+                        ref={(el) => {
+                          if (el) contentRefs.current[idx] = el;
+                        }}
+                        className="overflow-hidden"
+                      >
+                        <p className="text-white text-[14px] lg:text-[16px] xl:text-[18px] leading-6 lg:leading-7 max-w-[500px] font-normal mt-0"
+                          style={{ fontFamily: 'Myriad Pro, Helvetica, Arial, sans-serif', fontWeight: 400, marginTop: 0 }}>
                             {value.desc}
-                          </p>
+                        </p>
+                      </div>
                     </AccordionContent>
                   </AccordionItem>
                 ))}
@@ -144,6 +251,28 @@ export const FutureServices = () => {
       
       {/* Responsive styles for landscape modes */}
       <style>{`
+        /* Remove focus states and improve hover effects */
+        [data-radix-accordion-trigger] {
+          outline: none !important;
+          box-shadow: none !important;
+        }
+        
+        [data-radix-accordion-trigger]:focus {
+          outline: none !important;
+          background-color: transparent !important;
+          box-shadow: none !important;
+        }
+        
+        [data-radix-accordion-trigger]:focus-visible {
+          outline: none !important;
+          background-color: transparent !important;
+          box-shadow: none !important;
+        }
+        
+        [data-radix-accordion-trigger]:hover {
+          background-color: rgba(255, 255, 255, 0.05) !important;
+        }
+        
         /* Tablet and larger screens - Bigger fonts */
         @media (min-width: 768px) {
           .future-services-description {
