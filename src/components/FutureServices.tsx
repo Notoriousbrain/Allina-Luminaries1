@@ -55,7 +55,7 @@ export const FutureServices = () => {
     <>
       {/* FUTURE SERVICES Section Title */}
       <div className="flex justify-center items-center py-8 sm:py-10 md:py-12 px-4">
-        <h2 className="text-[#06153A] text-lg sm:text-xl md:text-[25px] font-normal tracking-[2px] sm:tracking-[3px] md:tracking-[4px] text-center"
+        <h2 className="text-[#06153A] text-lg sm:text-xl md:text-[32px] lg:text-[38px] font-normal tracking-[2px] sm:tracking-[3px] md:tracking-[4px] text-center"
             style={{ fontFamily: 'Myriad Pro, Helvetica, Arial, sans-serif', fontWeight: 400 }}>
           FUTURE SERVICES
         </h2>
@@ -67,12 +67,12 @@ export const FutureServices = () => {
           {/* Top Text and Expand/Collapse Button */}
           <div className="flex flex-col md:flex-row md:items-center md:justify-between pt-6 sm:pt-8 md:pt-12 mb-8 sm:mb-12 md:mb-16">
             <h3
-              className="text-white font-normal"
+              className="text-white font-normal future-services-description"
               style={{
                 fontFamily: 'Myriad Pro, Helvetica, Arial, sans-serif',
-                width: '854px',
-                fontSize: '28px',
-                lineHeight: '40px',
+                maxWidth: '854px',
+                fontSize: 'clamp(18px, 3vw, 36px)',
+                lineHeight: 'clamp(24px, 4vw, 48px)',
                 letterSpacing: '1%',
                 fontWeight: 200,
                 height: 'auto',
@@ -114,12 +114,12 @@ export const FutureServices = () => {
                         {value.num}
                       </span>
                       <span
-                        className="text-white font-normal text-left flex-1"
+                        className="text-white font-normal text-left flex-1 future-services-title"
                         style={{
                           fontFamily: 'Myriad Pro, Helvetica, Arial, sans-serif',
                           fontWeight: 400,
-                          fontSize: '32px',
-                          lineHeight: '79px',
+                          fontSize: 'clamp(20px, 4vw, 42px)',
+                          lineHeight: 'clamp(40px, 8vw, 90px)',
                           letterSpacing: '5%',
                           display: 'block',
                           marginBottom: 0
@@ -141,6 +141,69 @@ export const FutureServices = () => {
           </div>
         </div>
       </div>
+      
+      {/* Responsive styles for landscape modes */}
+      <style>{`
+        /* Tablet and larger screens - Bigger fonts */
+        @media (min-width: 768px) {
+          .future-services-description {
+            font-size: clamp(24px, 3vw, 44px) !important;
+            line-height: clamp(32px, 4vw, 56px) !important;
+          }
+          .future-services-title {
+            font-size: clamp(28px, 4vw, 52px) !important;
+            line-height: clamp(50px, 8vw, 100px) !important;
+          }
+        }
+        
+        /* Ultra-wide screens */
+        @media (min-width: 1440px) {
+          .future-services-description {
+            font-size: clamp(30px, 3vw, 50px) !important;
+            line-height: clamp(40px, 4vw, 64px) !important;
+          }
+          .future-services-title {
+            font-size: clamp(35px, 4vw, 60px) !important;
+            line-height: clamp(60px, 8vw, 110px) !important;
+          }
+        }
+        
+        /* Landscape mode optimizations */
+        @media (max-height: 600px) {
+          .future-services-description {
+            font-size: clamp(16px, 2.5vw, 28px) !important;
+            line-height: clamp(20px, 3vw, 35px) !important;
+          }
+          .future-services-title {
+            font-size: clamp(18px, 3vw, 30px) !important;
+            line-height: clamp(30px, 5vw, 60px) !important;
+          }
+        }
+        
+        /* Very short screens (like tablets in landscape) */
+        @media (max-height: 500px) {
+          .future-services-description {
+            font-size: clamp(14px, 2vw, 24px) !important;
+            line-height: clamp(18px, 2.5vw, 30px) !important;
+          }
+          .future-services-title {
+            font-size: clamp(16px, 2.5vw, 26px) !important;
+            line-height: clamp(24px, 4vw, 50px) !important;
+          }
+        }
+        
+        /* Mobile landscape adjustments */
+        @media (max-width: 640px) and (max-height: 500px) {
+          .future-services-description {
+            font-size: clamp(12px, 3vw, 16px) !important;
+            line-height: clamp(16px, 4vw, 20px) !important;
+          }
+          .future-services-title {
+            font-size: clamp(14px, 3vw, 18px) !important;
+            line-height: clamp(20px, 4vw, 30px) !important;
+          }
+        }
+      `}</style>
     </>
   );
 };

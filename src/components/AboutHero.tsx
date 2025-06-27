@@ -3,7 +3,7 @@ import React from 'react';
 export const AboutHero = () => {
   return (
     <div 
-      className="relative w-full overflow-hidden"
+      className="relative w-full overflow-hidden mb-0"
       style={{
         height: '86.25vh',
         backgroundColor: '#06153A'

@@ -72,9 +72,9 @@ export const ServicesGallery: React.FC = () => {
   return (
     <section 
       ref={sectionRef}
-      className="w-full bg-[#E7DED7] dark:bg-black transition-colors duration-700 pt-12 sm:pt-16 md:pt-20">
+      className="w-full bg-[#E7DED7] dark:bg-black transition-colors duration-700 mb-0">
       <div className="max-w-[1440px] mx-auto relative min-h-[600px] sm:min-h-[700px] md:min-h-[800px] px-4 sm:px-6 md:px-8">
-        <h2 className="text-center text-[#06153A] dark:text-[#E7DED7] text-[24px] sm:text-[28px] md:text-[32px] font-normal tracking-[2.5px] sm:tracking-[3px] md:tracking-[3.2px] mb-8 sm:mb-12 md:mb-16 transition-colors duration-700"
+        <h2 className="text-center text-[#06153A] dark:text-[#E7DED7] text-[24px] sm:text-[28px] md:text-[32px] font-normal tracking-[2.5px] sm:tracking-[3px] md:tracking-[3.2px] mb-8 sm:mb-8 md:mb-8 transition-colors duration-700"
             style={{ fontFamily: '"Myriad Pro", Helvetica, Arial, sans-serif' }}>
           GLIMPSE TO OUR SERVICES
         </h2>
@@ -110,32 +110,32 @@ export const ServicesGallery: React.FC = () => {
               const centeredLeft = originalLeft - 42; // Remove original offset from leftmost element
               
               return (
-                <div
-                  key={service.id}
-                  className={`absolute rounded-[20px] overflow-hidden transition-all duration-500 cursor-pointer ${
-                    hoveredId !== null && hoveredId !== service.id ? 'scale-95 opacity-50' : ''
-                  } ${hoveredId === service.id ? 'scale-105 z-10' : ''}`}
+            <div
+              key={service.id}
+              className={`absolute rounded-[20px] overflow-hidden transition-all duration-500 cursor-pointer ${
+                hoveredId !== null && hoveredId !== service.id ? 'scale-95 opacity-50' : ''
+              } ${hoveredId === service.id ? 'scale-105 z-10' : ''}`}
                   style={{
                     width: service.size.width,
                     height: service.size.height,
                     left: `${centeredLeft}px`,
                     top: service.size.top || '0px'
                   }}
-                  onMouseEnter={() => setHoveredId(service.id)}
-                  onMouseLeave={() => setHoveredId(null)}
-                >
-                  <img 
-                    src={service.image}
-                    alt={service.title}
-                    className="w-full h-full object-cover"
-                  />
-                  <div className={`absolute inset-0 bg-black/50 flex flex-col justify-end p-6 transition-opacity duration-300 ${
-                    hoveredId === service.id ? 'opacity-100' : 'opacity-0'
-                  }`}>
-                    <h3 className="text-white text-2xl font-normal mb-2">{service.title}</h3>
-                    <p className="text-[#DDB9A2] text-sm">{service.description}</p>
-                  </div>
-                </div>
+              onMouseEnter={() => setHoveredId(service.id)}
+              onMouseLeave={() => setHoveredId(null)}
+            >
+              <img 
+                src={service.image}
+                alt={service.title}
+                className="w-full h-full object-cover"
+              />
+              <div className={`absolute inset-0 bg-black/50 flex flex-col justify-end p-6 transition-opacity duration-300 ${
+                hoveredId === service.id ? 'opacity-100' : 'opacity-0'
+              }`}>
+                <h3 className="text-white text-2xl font-normal mb-2">{service.title}</h3>
+                <p className="text-[#DDB9A2] text-sm">{service.description}</p>
+              </div>
+            </div>
               );
             })}
           </div>

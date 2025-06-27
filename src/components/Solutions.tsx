@@ -119,7 +119,7 @@ const Solutions = () => {
     <>
       {/* STREETLIGHTING SOLUTIONS Section Title */}
       <div className="flex justify-center items-center py-8 sm:py-10 md:py-12 px-4">
-        <h2 className="text-[#06153A] text-lg sm:text-xl md:text-[25px] font-normal tracking-[2px] sm:tracking-[3px] md:tracking-[4px] text-center"
+        <h2 className="text-[#06153A] text-lg sm:text-xl md:text-[32px] lg:text-[38px] font-normal tracking-[2px] sm:tracking-[3px] md:tracking-[4px] text-center"
             style={{ fontFamily: 'Myriad Pro, Helvetica, Arial, sans-serif', fontWeight: 400 }}>
           STREETLIGHTING SOLUTIONS
         </h2>
@@ -148,10 +148,11 @@ const Solutions = () => {
                 >
                   <div className="flex items-center gap-4 w-full">
                     <span 
+                      className="solutions-number"
                       style={{
                         fontFamily: 'Myriad Pro, Helvetica, Arial, sans-serif',
                         fontWeight: 600,
-                        fontSize: '39px',
+                        fontSize: 'clamp(24px, 4vw, 50px)',
                         lineHeight: '100%',
                         letterSpacing: '0.2em',
                         color: '#06153A'
@@ -160,10 +161,11 @@ const Solutions = () => {
                       {solution.id}
                     </span>
                     <span 
+                      className="solutions-title"
                       style={{
                         fontFamily: 'Myriad Pro, Helvetica, Arial, sans-serif',
                         fontWeight: 400,
-                        fontSize: '30px',
+                        fontSize: 'clamp(18px, 3vw, 40px)',
                         lineHeight: '100%',
                         letterSpacing: '0.16em',
                         color: '#06153A'
@@ -217,6 +219,59 @@ const Solutions = () => {
         </div>
       </div>
     </div>
+    
+    {/* Responsive styles for landscape modes */}
+    <style>{`
+      /* Tablet and larger screens - Bigger fonts */
+      @media (min-width: 768px) {
+        .solutions-number {
+          font-size: clamp(35px, 4vw, 60px) !important;
+        }
+        .solutions-title {
+          font-size: clamp(28px, 3vw, 50px) !important;
+        }
+      }
+      
+      /* Ultra-wide screens */
+      @media (min-width: 1440px) {
+        .solutions-number {
+          font-size: clamp(45px, 4vw, 70px) !important;
+        }
+        .solutions-title {
+          font-size: clamp(35px, 3vw, 60px) !important;
+        }
+      }
+      
+      /* Landscape mode optimizations */
+      @media (max-height: 600px) {
+        .solutions-number {
+          font-size: clamp(20px, 3vw, 35px) !important;
+        }
+        .solutions-title {
+          font-size: clamp(16px, 2.5vw, 28px) !important;
+        }
+      }
+      
+      /* Very short screens (like tablets in landscape) */
+      @media (max-height: 500px) {
+        .solutions-number {
+          font-size: clamp(18px, 2.5vw, 30px) !important;
+        }
+        .solutions-title {
+          font-size: clamp(14px, 2vw, 24px) !important;
+        }
+      }
+      
+      /* Mobile landscape adjustments */
+      @media (max-width: 640px) and (max-height: 500px) {
+        .solutions-number {
+          font-size: clamp(16px, 4vw, 20px) !important;
+        }
+        .solutions-title {
+          font-size: clamp(12px, 3vw, 16px) !important;
+        }
+      }
+    `}</style>
     </>
   );
 };

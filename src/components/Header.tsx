@@ -21,7 +21,12 @@ export const Header: React.FC = () => {
       <Link
         to={to}
         className="relative uppercase tracking-[2.5px] md:tracking-[3.2px] text-lg md:text-xl transition-colors duration-700 group"
-        style={{ color: headerTextColor, fontFamily: 'Myriad Pro, Helvetica, Arial, sans-serif' }}
+        style={{ 
+          color: headerTextColor, 
+          fontFamily: 'Myriad Pro, Helvetica, Arial, sans-serif',
+          WebkitTapHighlightColor: 'transparent'
+        }}
+        onTouchStart={() => {}} // Ensure touch events work on mobile
       >
         {children}
         <span 
@@ -99,47 +104,100 @@ export const Header: React.FC = () => {
 
         {/* Right-side Drawer */}
         <div 
-          className={`fixed right-0 top-[60px] sm:top-[80px] md:top-[100px] w-[20vw] h-[40vh] bg-white dark:bg-black shadow-xl transition-transform duration-500 transform rounded-bl-[20px] z-40 ${
+          className={`fixed right-0 top-[60px] sm:top-[80px] md:top-[100px] w-[70vw] sm:w-[40vw] md:w-[25vw] h-[80vh] sm:h-[40vh] bg-white dark:bg-black shadow-xl transition-transform duration-500 transform rounded-bl-[20px] z-40 ${
             drawerOpen ? 'translate-x-0' : 'translate-x-full'
           }`}
           style={{ WebkitTapHighlightColor: 'transparent' }}
         >
-          <nav className="flex flex-col items-start gap-6 h-full p-8">
+          <nav className="flex flex-col items-start gap-4 sm:gap-6 h-full p-6 sm:p-8 overflow-y-auto">
+                {/* Main Navigation Links - Only show on mobile phones (≤640px) */}
+                <div className="sm:hidden flex flex-col gap-4 w-full">
+                  <Link 
+                    to="/about"
+                className="uppercase tracking-[2.5px] text-lg transition-colors duration-700 relative group outline-none"
+                style={{ 
+                  color: headerTextColor, 
+                  fontFamily: 'Myriad Pro, Helvetica, Arial, sans-serif',
+                  WebkitTapHighlightColor: 'transparent'
+                }}
+                onClick={() => setDrawerOpen(false)}
+                onTouchStart={() => {}} // Ensure touch events work
+                  >
+                    ABOUT
+                <span className="absolute left-0 bottom-0 w-0 h-[2px] bg-current transition-all duration-300 group-hover:w-1/2" />
+                  </Link>
+                  <Link 
+                    to="/projects"
+                className="uppercase tracking-[2.5px] text-lg transition-colors duration-700 relative group outline-none"
+                style={{ 
+                  color: headerTextColor, 
+                  fontFamily: 'Myriad Pro, Helvetica, Arial, sans-serif',
+                  WebkitTapHighlightColor: 'transparent'
+                }}
+                onClick={() => setDrawerOpen(false)}
+                onTouchStart={() => {}} // Ensure touch events work
+                  >
+                    PROJECTS
+                <span className="absolute left-0 bottom-0 w-0 h-[2px] bg-current transition-all duration-300 group-hover:w-1/2" />
+                  </Link>
+                  <Link 
+                    to="/services"
+                className="uppercase tracking-[2.5px] text-lg transition-colors duration-700 relative group outline-none"
+                style={{ 
+                  color: headerTextColor, 
+                  fontFamily: 'Myriad Pro, Helvetica, Arial, sans-serif',
+                  WebkitTapHighlightColor: 'transparent'
+                }}
+                onClick={() => setDrawerOpen(false)}
+                onTouchStart={() => {}} // Ensure touch events work
+                  >
+                    SERVICES
+                <span className="absolute left-0 bottom-0 w-0 h-[2px] bg-current transition-all duration-300 group-hover:w-1/2" />
+                  </Link>
+                  
+                  {/* Divider - Only on mobile */}
+                  <div className="w-full h-[1px] bg-gray-300 dark:bg-gray-600 my-2"></div>
+                </div>
+                
+                {/* Secondary Navigation Links - Always show */}
                 <Link 
                   to="/sustainability"
-              className="uppercase tracking-[2.5px] text-xl transition-colors duration-700 relative group outline-none"
+              className="uppercase tracking-[2.5px] text-lg sm:text-xl transition-colors duration-700 relative group outline-none"
               style={{ 
                 color: headerTextColor, 
                 fontFamily: 'Myriad Pro, Helvetica, Arial, sans-serif',
                 WebkitTapHighlightColor: 'transparent'
               }}
               onClick={() => setDrawerOpen(false)}
+              onTouchStart={() => {}} // Ensure touch events work
                 >
                   SUSTAINABILITY
               <span className="absolute left-0 bottom-0 w-0 h-[2px] bg-current transition-all duration-300 group-hover:w-1/2" />
                 </Link>
                 <Link 
                   to="/career"
-              className="uppercase tracking-[2.5px] text-xl transition-colors duration-700 relative group outline-none"
+              className="uppercase tracking-[2.5px] text-lg sm:text-xl transition-colors duration-700 relative group outline-none"
               style={{ 
                 color: headerTextColor, 
                 fontFamily: 'Myriad Pro, Helvetica, Arial, sans-serif',
                 WebkitTapHighlightColor: 'transparent'
               }}
               onClick={() => setDrawerOpen(false)}
+              onTouchStart={() => {}} // Ensure touch events work
             >
               CAREERS
               <span className="absolute left-0 bottom-0 w-0 h-[2px] bg-current transition-all duration-300 group-hover:w-1/2" />
                 </Link>
                 <Link 
                   to="/contact"
-              className="uppercase tracking-[2.5px] text-xl transition-colors duration-700 relative group outline-none"
+              className="uppercase tracking-[2.5px] text-lg sm:text-xl transition-colors duration-700 relative group outline-none"
               style={{ 
                 color: headerTextColor, 
                 fontFamily: 'Myriad Pro, Helvetica, Arial, sans-serif',
                 WebkitTapHighlightColor: 'transparent'
               }}
               onClick={() => setDrawerOpen(false)}
+              onTouchStart={() => {}} // Ensure touch events work
             >
               CONTACT US
               <span className="absolute left-0 bottom-0 w-0 h-[2px] bg-current transition-all duration-300 group-hover:w-1/2" />
@@ -147,6 +205,46 @@ export const Header: React.FC = () => {
               </nav>
         </div>
       </nav>
+      
+      {/* Mobile drawer responsive styles */}
+      <style>{`
+        /* Mobile phones - Full navigation (6 options) */
+        @media (max-width: 640px) {
+          .fixed.right-0[class*="w-[70vw]"] {
+            width: 80vw !important;
+            max-width: 300px !important;
+          }
+          
+          /* Mobile landscape adjustments */
+          @media (max-height: 500px) {
+            .fixed.right-0[class*="h-[80vh]"] {
+              height: 90vh !important;
+            }
+          }
+        }
+        
+        /* Tablet adjustments - Only secondary navigation (3 options) */
+        @media (min-width: 641px) and (max-width: 1024px) {
+          .fixed.right-0[class*="w-[40vw]"] {
+            width: 35vw !important;
+            min-width: 250px !important;
+            max-width: 320px !important;
+          }
+          .fixed.right-0[class*="h-[40vh]"] {
+            height: 35vh !important;
+            min-height: 200px !important;
+          }
+        }
+        
+        /* Desktop adjustments - Only secondary navigation (3 options) */
+        @media (min-width: 1025px) {
+          .fixed.right-0[class*="w-[25vw]"] {
+            width: 22vw !important;
+            min-width: 280px !important;
+            max-width: 350px !important;
+          }
+        }
+      `}</style>
     </header>
   );
 };

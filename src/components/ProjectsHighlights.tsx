@@ -118,7 +118,7 @@ export const ProjectsHighlights = () => {
       <div className="flex justify-center items-center pb-12 px-4">
         <h2 className="text-[#06153A] text-lg sm:text-xl md:text-[25px] font-normal tracking-[2px] sm:tracking-[3px] md:tracking-[4px] text-center"
             style={{ fontFamily: 'Myriad Pro, Helvetica, Arial, sans-serif', fontWeight: 400 }}>
-          WHY OUR PROJECTS STANDS OUT?
+        WHY OUR PROJECTS STANDS OUT?
         </h2>
       </div>
       <div style={groupStyle}>

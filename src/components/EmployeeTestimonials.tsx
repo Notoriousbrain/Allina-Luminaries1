@@ -68,13 +68,13 @@ export const EmployeeTestimonials = () => {
       <div className="flex justify-center items-center py-8 sm:py-10 md:py-12 px-4">
         <h2 className="text-[#06153A] text-lg sm:text-xl md:text-[25px] font-normal tracking-[2px] sm:tracking-[3px] md:tracking-[4px] text-center"
             style={{ fontFamily: 'Myriad Pro, Helvetica, Arial, sans-serif', fontWeight: 400 }}>
-          EMPLOYEE TESTIMONIALS
-        </h2>
+        EMPLOYEE TESTIMONIALS
+      </h2>
       </div>
-
+      
       {/* EMPLOYEE TESTIMONIALS Content */}
       <section className="w-full bg-[#E7DED7] pt-0 pb-8 flex flex-col items-center min-h-[400px]">
-        {/* Dots */}
+      {/* Dots */}
         <div className="flex gap-2 mb-8">
         {testimonials.map((_, idx) => (
           <span
@@ -85,7 +85,7 @@ export const EmployeeTestimonials = () => {
         ))}
       </div>
 
-              {/* Animated lines and testimonial */}
+      {/* Animated lines and testimonial */}
         <div className="relative flex items-center justify-center w-full max-w-6xl" style={{ minHeight: '300px', marginBottom: '40px' }}>
         {/* Left line */}
         <div

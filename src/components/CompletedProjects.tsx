@@ -189,54 +189,54 @@ export const CompletedProjects = () => {
               width: '644px',
               height: '415px',
               flexShrink: 0
-            }}>
-              <img 
+        }}>
+          <img 
                 src={image.src}
                 alt={image.alt}
-                style={{
-                  width: '100%',
-                  height: '100%',
-                  objectFit: 'cover',
-                  borderRadius: '21px'
-                }}
-              />
-              <div style={{
-                position: 'absolute',
-                bottom: '20px',
-                left: '20px',
-                right: '20px',
-                backgroundColor: 'rgba(0, 0, 0, 0.7)',
-                padding: '10px 15px',
-                borderRadius: '8px'
-              }}>
-                <div style={{
-                  color: '#ffffff',
-                  fontFamily: '"Myriad Pro-SemiExtended", Helvetica',
-                  fontSize: '18px',
-                  fontWeight: '400',
-                  marginBottom: '5px'
-                }}>
+            style={{
+              width: '100%',
+              height: '100%',
+              objectFit: 'cover',
+              borderRadius: '21px'
+            }}
+          />
+          <div style={{
+            position: 'absolute',
+            bottom: '20px',
+            left: '20px',
+            right: '20px',
+            backgroundColor: 'rgba(0, 0, 0, 0.7)',
+            padding: '10px 15px',
+            borderRadius: '8px'
+          }}>
+            <div style={{
+              color: '#ffffff',
+              fontFamily: '"Myriad Pro-SemiExtended", Helvetica',
+              fontSize: '18px',
+              fontWeight: '400',
+              marginBottom: '5px'
+            }}>
                   {image.title}
-                </div>
-                <div style={{
-                  display: 'flex',
-                  gap: '6px',
-                  justifyContent: 'center'
-                }}>
+            </div>
+            <div style={{
+              display: 'flex',
+              gap: '6px',
+              justifyContent: 'center'
+            }}>
                   {projectImages.map((_, dotIndex) => (
-                    <div
+                <div
                       key={dotIndex}
-                      style={{
-                        width: '8px',
-                        height: '8px',
-                        borderRadius: '50%',
+                  style={{
+                    width: '8px',
+                    height: '8px',
+                    borderRadius: '50%',
                         backgroundColor: dotIndex === getActualSlideIndex(currentImageIndex) ? '#ddb9a2' : '#666666',
-                        transition: 'background-color 0.3s ease'
-                      }}
-                    />
-                  ))}
-                </div>
-              </div>
+                    transition: 'background-color 0.3s ease'
+                  }}
+                />
+              ))}
+            </div>
+          </div>
             </div>
           ))}
         </div>
